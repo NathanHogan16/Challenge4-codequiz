@@ -52,3 +52,64 @@ function startQuiz() {
     getQuestion();
 }
 
+function getQuestion() {
+    let currentQuestion = questions[questionIndex];
+
+    let titleEl = document.getElementById("question-title");
+    titleEl.textContent - currentQuestion.title;
+
+    choicesEl.innerHTML = "";
+
+    currentQuestion.choices.forEach(function(choice, i) {
+        let choiceSelect = document.createElement("button");
+        choiceSelect.setAttribute("class", "choice");
+        choiceSelect.setAttribute("value", choice);
+
+        choiceSelect.textContent = i + 1 + ". " + choice;
+
+        choiceSelect.onclick = questionClick;
+
+        choicesEl.appendChild(choiceSelect);
+    });
+}
+
+function questionClick() {
+    if (this.value !== questions[questionIndex].answer) {
+            time - 15;
+        if (time < 0) {
+            time = 0;
+        }
+
+        timerEl.textContent = time;
+    }
+
+    questionIndex++;
+
+    if (questionIndex === questions.length) {
+        quizEnd();
+    } else {
+        getQuestion();
+    }
+}
+
+
+function quizEnd() {
+    clearInterval(timerId);
+
+    let endScreenEl = document.getElementById("end-screen");
+    endScreenEl.removeAttribute("class");
+
+    let finalScore = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+
+    questionsEl.setAttribute("class", "hide");
+}
+
+function clockTick() {
+    time--;
+    timerEl.textContent = time;
+
+    if (time <= 0) {
+        quizEnd();
+    }
+}
