@@ -1,0 +1,10 @@
+:root {
+    --primary: lightgray;
+    --secondary: blue;
+    --third: red;
+
+}
+
+.hide {
+    display: none;
+}

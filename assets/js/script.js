@@ -1,9 +1,9 @@
 // variables
 let questionIndex = 0;
-let time = questions.length * 15;
+
 let timerId;
 let timerEl = document.getElementById("time");
-let startButtonEl = document.getElementById("start");
+let startButtonEl = document.getElementById("start-button");
 let questionsEl = document.getElementById("questions");
 let choicesEl = document.getElementById("choices");
 let initialsEl = document.getElementById("initials");
@@ -37,6 +37,10 @@ let questions = [
         answer: "Dogs"
     }
 ];
+
+let time = questions.length * 15;
+
+
 
 // Start quiz and hide start screen
 function startQuiz() {
@@ -99,7 +103,7 @@ function quizEnd() {
     let endScreenEl = document.getElementById("end-screen");
     endScreenEl.removeAttribute("class");
 
-    let finalScore = document.getElementById("final-score");
+    let finalScoreEl = document.getElementById("final-score");
     finalScoreEl.textContent = time;
 
     questionsEl.setAttribute("class", "hide");
@@ -112,4 +116,9 @@ function clockTick() {
     if (time <= 0) {
         quizEnd();
     }
+}
+
+
+startButtonEl.onclick = ()=> {
+    startQuiz();
 }
