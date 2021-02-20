@@ -8,6 +8,9 @@ let questionsEl = document.getElementById("questions");
 let choicesEl = document.getElementById("choices");
 let initialsEl = document.getElementById("initials");
 let submitButtonEl = document.getElementById("submit");
+let scores = [];
+let highScores = document.getElementById("highscores");
+
 
 // Questions
 let questions = [
@@ -59,8 +62,8 @@ function startQuiz() {
 function getQuestion() {
     let currentQuestion = questions[questionIndex];
 
-    let titleEl = document.getElementById("question-title");
-    titleEl.textContent - currentQuestion.title;
+    let titleEl = document.getElementById("questions-title");
+    titleEl.textContent = currentQuestion.title;
 
     choicesEl.innerHTML = "";
 
@@ -79,7 +82,7 @@ function getQuestion() {
 
 function questionClick() {
     if (this.value !== questions[questionIndex].answer) {
-            time - 15;
+            time -= 15;
         if (time < 0) {
             time = 0;
         }
@@ -103,12 +106,14 @@ function quizEnd() {
     let endScreenEl = document.getElementById("end-screen");
     endScreenEl.removeAttribute("class");
 
-    let finalScoreEl = document.getElementById("final-score");
+    
     finalScoreEl.textContent = time;
 
     questionsEl.setAttribute("class", "hide");
-}
+    
 
+}
+let finalScoreEl = document.getElementById("final-score");
 function clockTick() {
     time--;
     timerEl.textContent = time;
@@ -117,6 +122,37 @@ function clockTick() {
         quizEnd();
     }
 }
+
+
+
+submitButtonEl.onclick = ()=> {
+    //let score = finalScoreEl.value;
+    let input = initialsEl.value;
+
+    console.log(time);
+    console.log(input);
+
+    //make leader board array from getstoarge
+    //push newScore to leader board array 
+    //set item leader board array using spraed oporator ....
+    let leaderBoard = [];
+    let topScores = JSON.parse(localStorage.getItem("score"));
+    if(topScores) {
+        leaderBoard.push(...topScores);
+        
+    } 
+    leaderBoard.push({"user":input,"score":time});
+
+    
+console.log(leaderBoard);
+    
+    //iterate thorugh leaderboard array with for loop, create table based on score and display for users
+    
+    
+
+        localStorage.setItem("score", JSON.stringify(leaderBoard));
+        console.log("hi");
+};
 
 
 startButtonEl.onclick = ()=> {
