@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
 :root {
     --primary: lightgray;
     --secondary: blue;
@@ -7,4 +13,67 @@
 
 .hide {
     display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    margin: 0 auto;
+    font-size: 20px;
+    background-color: blueviolet;
+    background-size: 100%;
+    
+}
+
+.timer {
+display: flex;
+font-size: 50px;
+}
+
+.start {
+    font-size: 40px;
+}
+
+button {
+    background-color: white;
+    border: black solid 2px;
+    font-size: 20px;
+    padding: 15px 32px;
+    border-radius: 12px;
+    margin: 15px;
+}
+
+#questions {
+    font-size: 40px;
+}
+
+#end-screen {
+    font-size: 40px;
+}
+
+input {
+    border: black solid 3px;
+    height: 60px;
+    font-size: 40px;
+    width: 100px;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+h1 {
+    font-size: 60px;
 }

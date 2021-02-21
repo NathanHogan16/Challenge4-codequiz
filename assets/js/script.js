@@ -144,14 +144,31 @@ submitButtonEl.onclick = ()=> {
     leaderBoard.push({"user":input,"score":time});
 
     
-console.log(leaderBoard);
-    
-    //iterate thorugh leaderboard array with for loop, create table based on score and display for users
-    
+    console.log(leaderBoard);
+
+    // getScores = JSON.parse(localStorage.getItem(leaderBoard)) || [];
+
+    // highScores.innerHTML = leaderBoard.map(score => {
+    //     return leader
+
     
 
-        localStorage.setItem("score", JSON.stringify(leaderBoard));
-        console.log("hi");
+    let table = ()=> {
+        //iterate thorugh leaderboard array with for loop, create table based on score and display for users
+        for (let i = 0; i < leaderBoard.length; i++) {
+            leaderBoard += names[i] + ", " + scores[i];
+            let list = document.createElement("li");
+            list.setAttribute("value", highScores[i]);
+            highScores.appendChild("high-score");
+        }
+
+        //document.jquerySelector("high-scores").value = leaderBoard;
+        //highScores.appendChild(list);
+    };
+    
+
+    localStorage.setItem("score", JSON.stringify(leaderBoard));
+    console.log("hi");
 };
 
 
